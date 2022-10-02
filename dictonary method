@@ -1,0 +1,16 @@
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        d={}
+        if k==0:
+            return False
+        
+        for we in range(len(nums)):
+            val=nums[we]
+            if val not in d:
+                d[val]=we
+            else:
+                if abs(we-d[val])<=k:
+                    return True
+                else:
+                    d[val]=we
+        return False
